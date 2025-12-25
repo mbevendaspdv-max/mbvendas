@@ -5,6 +5,7 @@ import Script from "next/script";
 import "./globals.css";
 // Import all available fonts for AI usage
 import "../lib/fonts";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Criado com a Lasy",
-  description: "Projeto criado com Lasy AI",
+  title: "MBvendas - Sistema de Gestão",
+  description: "Sistema completo de gestão de vendas",
 };
 
 export default function RootLayout({
@@ -34,7 +35,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
